@@ -1,21 +1,22 @@
 module.exports = function solveEquation(equation) {
-   var parameters = equation.replace(/\s/g, "").replace(/(\**x(\^2)*)/g, "&");
-  var paramArr = parameters.split("&");
+  const parameters = equation.replace(/\s/g, "").replace(/(\**x(\^2)*)/g, "&");
+  const сoefficiens = parameters.split("&");
   
-  var a = addParam(paramArr[0]);
-  var b = addParam(paramArr[1]);
-  var c = addParam(paramArr[2]);
-  console.log(a,b,c);
-  var discr = b*b - 4*a*c;
-  var roots = [];
+  const a = parseСoefficient(сoefficiens[0]);
+  const b = parseСoefficient(сoefficiens[1]);
+  const c = parseСoefficient(сoefficiens[2]);
+
+  const discriminant = b*b - 4*a*c;
+  const roots = [];
   
-  if(discr === 0){
-    var x = -b/2*a;
+  if(discriminant === 0){
+    const x = -b/2*a;
     roots.push(x);
     roots.push(x);
   } else {
-    var x1 = Math.round((-b + Math.sqrt(discr))/(2*a));
-    var x2 = Math.round((-b - Math.sqrt(discr))/(2*a));
+    var x1 = Math.round((-b + Math.sqrt(discriminant))/(2*a));
+    var x2 = Math.round((-b - Math.sqrt(discriminant))/(2*a));
+    
     if(x1 < x2){
     	roots.push(x1);
     	roots.push(x2);
@@ -27,8 +28,8 @@ module.exports = function solveEquation(equation) {
   return roots;
 }
 
-function addParam(param){
-  var result;
+function parseСoefficient(param){
+  let result;
   if(param == ""){
     result = 1;
   }else if(param == "-"){
