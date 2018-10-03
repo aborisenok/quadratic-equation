@@ -1,10 +1,7 @@
 module.exports = function solveEquation(equation) {
   const parameters = equation.replace(/\s/g, "").replace(/(\**x(\^2)*)/g, "&");
   const сoefficiens = parameters.match(/((-?\+?)\d+)/g);
-  
-  const a = parseInt(сoefficiens[0]);
-  const b = parseInt(сoefficiens[1]);
-  const c = parseInt(сoefficiens[2]);
+  const [a, b, c] = сoefficiens;
 
   const discriminant = b*b - 4*a*c;
   
